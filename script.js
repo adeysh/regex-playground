@@ -1,6 +1,3 @@
-// script.js
-console.log("script loaded");
-
 // DOM References
 const patternInput = document.getElementById("regex-pattern");
 const testArea = document.getElementById("test-area");
@@ -14,17 +11,13 @@ const patternError = document.querySelector(".regex-pattern-error");
 const visualMatchContainer = document.querySelector(".playground__visual-match");
 const copyExportBtn = document.getElementById("copyExport");
 const downloadExportBtn = document.getElementById("downloadExport");
-// Theme toggle switch logic
 const toggleSwitch = document.getElementById("toggle-switch");
-
-
-
 
 const flagCheckboxes = ["g", "i", "m", "s", "u", "y"]
     .map(f => document.getElementById(`switch-${f}`));
 
 let snippets = [];
-// Load snippets from JSON
+
 fetch("snippets.json")
     .then(res => res.json())
     .then(data => {
@@ -192,14 +185,11 @@ function updateMatches() {
 
         const isJSON = content.trim().startsWith("{") || content.trim().startsWith("[");
         a.download = isJSON ? "regex-results.json" : "regex-results.txt";
-
         a.href = url;
         a.click();
         URL.revokeObjectURL(url);
     };
-
 }
-
 
 // Update matches when input changes
 [patternInput, testArea, ...flagCheckboxes].forEach(el => {
@@ -230,4 +220,3 @@ toggleSwitch.addEventListener("change", () => {
     document.body.classList.toggle("dark-theme", isChecked);
     localStorage.setItem("theme", isChecked ? "dark" : "light");
 });
-
