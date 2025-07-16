@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Playground</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header__info">
+            <h1 class="header__title">🛠️ Regex Playground</h1>
+            <p class="header__description">Test, visualize, and debug JavaScript regular expressions directly in your
+                browser.</p>
+        </div>
+
+        <div class="header__options">
+            <!-- theme toggle switch -->
+            <div class="playground__theme-toggle-switch">
+                <label for="toggle-switch" class="switch themed-switch">
+                    <i class="ph ph-sun light-icon"></i>
+                    <input type="checkbox" id="toggle-switch" />
+                    <span class="slider"></span>
+                    <i class="ph ph-moon dark-icon"></i>
+                </label>
+            </div>
+
+            <!-- github repo link -->
+            <a class="github-repo" href="https://github.com/adeysh/regex-playground" target="_blank" rel="noopener"
+                title="View on GitHub">
+                <i class="ph-fill ph-github-logo"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Regex-Playground -->
+        <div class="playground container">
+            <div class="playground__pattern-row">
+                <!-- regex input panel -->
+                <section class="playground__pattern">
+                    <label for="regex-pattern" class="playground__label">Enter Regex Pattern:</label>
+                    <div class="editable-input">
+                        <input type="text" name="regex-pattern" id="regex-pattern" class="playground__input">
+                        <i class="ph ph-pencil-simple-line edit-icon"></i>
+                    </div>
+
+                    <div class="regex-pattern-errors">
+                        <p class="regex-pattern-error">This is syntax error</p>
+                    </div>
+                </section>
+
+                <!-- snippets -->
+                <section class="playground__snippets">
+                    <label for="snippets" class="playground__label">
+                        Common Regex Snippets
+                    </label>
+
+                    <select name="snippets" id="snippets" class="snippets-select">
+                        <!-- generate options from snippets.json file -->
+                    </select>
+                </section>
+            </div>
+
+            <!-- flags -->
+            <section class="playground__flags">
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-g" class="switch">
+                        g
+                        <input type="checkbox" id="switch-g">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-i" class="switch">
+                        i
+                        <input type="checkbox" id="switch-i">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-m" class="switch">
+                        m
+                        <input type="checkbox" id="switch-m">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-s" class="switch">
+                        s
+                        <input type="checkbox" id="switch-s">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-u" class="switch">
+                        u
+                        <input type="checkbox" id="switch-u">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="playground__switch">
+                    <!-- From Uiverse.io by mrhyddenn -->
+                    <label for="switch-y" class="switch">
+                        y
+                        <input type="checkbox" id="switch-y">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- test text area -->
+            <section class="playground__test-area">
+                <label class="playground__label" for="test-area">Test your pattern here:</label>
+                <div class="editable-input">
+                    <textarea name="test-area" id="test-area"></textarea>
+                    <i class="ph ph-pencil-simple-line edit-icon"></i>
+                </div>
+            </section>
+
+            <!-- visual-match -->
+            <section class="playground__visual-match">
+                <!-- generated dynamically through js -->
+                <div class="match">
+                    <div class="matched-text">Match 1: <mark>hello@example.com</mark></div>
+                    <ul class="groups">
+                        <li>$1: <span class="group">hello</span></li>
+                        <li>$2: <span class="group">example.com</span></li>
+                    </ul>
+                </div>
+
+                <div class="match">
+                    <div class="matched-text">Match 2: <mark>support@devtools.io</mark></div>
+                    <ul class="groups">
+                        <li>$1: <span class="group">support</span></li>
+                        <li>$2: <span class="group">devtools.io</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- result panel -->
+            <section id="resultPanel" class="result-panel">
+                <h2>🎯 Match Results</h2>
+
+                <p id="matchCount">Total Matches:
+                    <span class="count">0</span>
+                </p>
+
+                <div id="matchList" class="match-list">
+                    <!-- Matches will be inserted here dynamically -->
+                </div>
+
+                <div class="export-controls">
+                    <button type="button" id="exportJSON">
+                        <i class="ph ph-brackets-curly"></i> Export JSON
+                    </button>
+                    <button type="button" id="exportText">
+                        <i class="ph ph-file-text"></i> Export Text
+                    </button>
+                    <button type="button" id="copyExport">
+                        <i class="ph ph-copy-simple"></i> Copy
+                    </button>
+                    <button type="button" id="downloadExport">
+                        <i class="ph ph-download-simple"></i> Download
+                    </button>
+                </div>
+
+                <!-- Output Modal / Area -->
+                <textarea id="exportOutput" readonly placeholder="Exported result will appear here..."></textarea>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        Made by
+        <a href="https://github.com/adeysh">@adeysh</a>
+    </footer>
+</body>
+
+</html>

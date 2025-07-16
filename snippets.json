@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Email Address",
+        "description": "Matches a basic email format like user@example.com",
+        "pattern": "(\\w+)@(\\w+\\.\\w+)"
+    },
+    {
+        "name": "Phone Number",
+        "description": "Matches various phone number formats, including international and US style",
+        "pattern": "^\\+?[\\d\\s()-]{7,}$"
+    },
+    {
+        "name": "URL",
+        "description": "Matches HTTP or HTTPS URLs",
+        "pattern": "https?:\\/\\/[^\\s/$.?#].[^\\s]*"
+    },
+    {
+        "name": "IPv4 Address",
+        "description": "Matches IPv4 addresses like 192.168.0.1",
+        "pattern": "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b"
+    },
+    {
+        "name": "Date (YYYY-MM-DD)",
+        "description": "Matches ISO date format",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    {
+        "name": "Time (24-Hour)",
+        "description": "Matches time in HH:MM format (24-hour)",
+        "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$"
+    },
+    {
+        "name": "Postal / ZIP Code",
+        "description": "Matches US ZIP codes (5 digits or ZIP+4 format)",
+        "pattern": "^\\d{5}(-\\d{4})?$"
+    },
+    {
+        "name": "Username",
+        "description": "Alphanumeric usernames (3-16 characters)",
+        "pattern": "^[a-zA-Z0-9_-]{3,16}$"
+    },
+    {
+        "name": "Password (Strong)",
+        "description": "At least 1 letter, 1 number, and 8+ characters",
+        "pattern": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{8,}$"
+    },
+    {
+        "name": "Hex Color",
+        "description": "Matches hex color codes (#fff or #ffffff)",
+        "pattern": "^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+    },
+    {
+        "name": "HTML Tag",
+        "description": "Matches any basic HTML tag",
+        "pattern": "<[^>]+>"
+    },
+    {
+        "name": "Trim Whitespace",
+        "description": "Matches leading and trailing spaces",
+        "pattern": "^\\s+|\\s+$"
+    },
+    {
+        "name": "Markdown Heading",
+        "description": "Matches # Markdown headings",
+        "pattern": "^#{1,6}\\s+(.+)$"
+    },
+    {
+        "name": "JavaScript Variable Name",
+        "description": "Valid variable names in JavaScript",
+        "pattern": "^[a-zA-Z_$][a-zA-Z\\d_$]*$"
+    },
+    {
+        "name": "UUID v4",
+        "description": "Matches UUID version 4 format",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    }
+]
