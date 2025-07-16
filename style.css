@@ -62,6 +62,11 @@ body {
     flex: 1;
 }
 
+.header__icon {
+    width: 1.8rem;
+    color: var(--text);
+}
+
 .header__title {
     font-size: 1.8rem;
     margin-bottom: 0.25rem;
@@ -83,7 +88,7 @@ body {
 }
 
 .github-repo {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     color: var(--muted);
     transition: color 0.2s ease;
 }
@@ -368,7 +373,7 @@ label.themed-switch:has(#toggle-switch:checked) .dark-icon {
 }
 
 .github-repo i {
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: color var(--transition);
     border: 1px solid var(--muted);
